@@ -113,6 +113,7 @@
       <a href="#about" class="btn">About</a>
       <a href="#skills" class="btn">Skills</a>
       <a href="#projects" class="btn">Projects</a>
+      <a href="#education" class="btn">education</a>
       <a href="#certificates" class="btn">Certificates</a>
       <a href="#experience" class="btn">Experience</a>
       <a href="#contact" class="btn">Contact</a>
@@ -184,7 +185,13 @@
         and collaborating with other developers to bring creative ideas to life.
       </p>
 
-      
+      <div class="flex gap-4 mt-6">
+        <a href="#skills" class="btn text-sm">View My Skills</a>
+        <a href="#projects" class="btn text-sm">See My Projects</a>
+      </div>
+    </div>
+
+    
   </div>
 </section>
 
@@ -393,29 +400,57 @@
   </div>
 </section>
 
+
+<!-- EDUCATION -->
+<section id="education" class="max-w-6xl mx-auto px-6 py-16 fade-in">
+  <h2 class="text-3xl font-semibold accent mb-6">Education</h2>
+  <div class="space-y-6 text-sm">
+    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
+        <div>
+        <h3 class="text-lg font-semibold text-white">🎓 B.Tech in Computer Science (AI)</h3>
+        <p class="text-gray-400">MJR College of Engineering & Technology (Affiliated to JNTUA)</p>
+        <p class="text-gray-400">2022 – 2026 | CGPA: <span class="text-cyan-400 font-semibold">78.6%</span></p>
+        <p class="text-gray-400">Pileru, Andhra Pradesh</p>
+      </div>
+    </div>
+    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
+   
+      <div>
+        <h3 class="text-lg font-semibold text-white">🏫 Intermediate (BIEAP)</h3>
+        <p class="text-gray-400">Sree Chaitanya Junior College</p>
+        <p class="text-gray-400">2020 – 2022 | 46.4%</p>
+        <p class="text-gray-400">Pileru, Andhra Pradesh</p>
+      </div>
+    </div>
+    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
+           <div>
+        <h3 class="text-lg font-semibold text-white">📘 SSC (Board of Secondary Education, AP)</h3>
+        <p class="text-gray-400">Yarravaripalem, Andhra Pradesh</p>
+        <p class="text-gray-400">2019 – 2020 | 77.7%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- CERTIFICATES -->
 <section id="certificates" class="max-w-6xl mx-auto px-6 py-16 fade-in">
   <h2 class="text-3xl font-semibold accent mb-6">Certificates</h2>
   <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-
-    <a href="certificates/python_intern.pdf" download class="glass p-4 block hover:bg-white/10 transition cursor-pointer">
+    <div onclick="openModal('python intern.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
       <strong class="text-white">🐍 Python Intern - Skilldzire</strong>
-      <p class="text-gray-400">Click to download certificate</p>
-    </a>
-
-    <a href="certificates/webvoid.pdf" download class="glass p-4 block hover:bg-white/10 transition cursor-pointer">
+      <p class="text-gray-400">Click to view certificate</p>
+    </div>
+    <div onclick="openModal('webvoid.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
       <strong class="text-white">💻 Python Intern - WebVoid Technologies</strong>
-      <p class="text-gray-400">Click to download certificate</p>
-    </a>
-
-    <a href="certificates/nptel.pdf" download class="glass p-4 block hover:bg-white/10 transition cursor-pointer">
+      <p class="text-gray-400">Click to view certificate</p>
+    </div>
+    <div onclick="openModal('nptel.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
       <strong class="text-white">🎓 NPTEL Certification</strong>
-      <p class="text-gray-400">Click to download certificate</p>
-    </a>
-
+      <p class="text-gray-400">Click to view certificate</p>
+    </div>
   </div>
 </section>
-
 
 <!-- EXPERIENCE -->
 <section id="experience" class="max-w-6xl mx-auto px-6 py-16 fade-in">
@@ -442,4 +477,120 @@
 <!-- CONTACT / GET IN TOUCH -->
 <section id="contact" class="max-w-5xl mx-auto px-6 py-16 fade-in text-center">
   <h2 class="text-3xl font-semibold accent mb-6">📬 Get In Touch</h2>
-  <
+  <p class="text-gray-300 mb-10 text-sm md:text-base">
+    I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.  
+    Let’s connect and build something amazing together.
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-8 mt-8">
+
+    <!-- Phone -->
+    <a href="tel:+919951994651" target="_blank"
+       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" class="w-10 h-10 mb-2" alt="Phone">
+      <span class="text-gray-300 text-sm">Phone</span>
+      <span class="text-cyan-400 text-xs mt-1">+91 9951994651</span>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:mohithkumarreddyvalasareddy@gmail.com" target="_blank" 
+       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="w-10 h-10 mb-2" alt="Email">
+      <span class="text-gray-300 text-sm">Email</span>
+      <span class="text-cyan-400 text-xs mt-1">valasareddymohith17@gmail.com</span>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/MOHITH172005" target="_blank" 
+       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-10 h-10 mb-2" alt="GitHub">
+      <span class="text-gray-300 text-sm">GitHub</span>
+      <span class="text-cyan-400 text-xs mt-1">@MOHITH172005</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/mohith-kumar-reddy-valasareddy" target="_blank" 
+       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-10 h-10 mb-2" alt="LinkedIn">
+      <span class="text-gray-300 text-sm">LinkedIn</span>
+      <span class="text-cyan-400 text-xs mt-1">/in/mohith-kumar-reddy-valasareddy</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="certModal" class="modal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+  <img id="certImg" src="" alt="Certificate">
+</div>
+
+
+<script>
+  const lines = [
+    "Hi, I'm Mohith Kumar Reddy Valasareddy",
+    "I'm a Python Full Stack Developer",
+    "and Backend Developer"
+  ];
+  const speeds = 40;
+  function typeLine(i=0, j=0) {
+    if (i >= lines.length) return;
+    const el = document.getElementById('intro'+(i+1));
+    el.textContent = lines[i].slice(0,j);
+    if (j < lines[i].length) {
+      setTimeout(()=>typeLine(i,j+1),speeds);
+    } else {
+      el.classList.add('typing');
+      setTimeout(()=>{ el.classList.remove('typing'); typeLine(i+1,0); },600);
+    }
+  }
+
+  function reveal() {
+    const elements = document.querySelectorAll('.fade-in');
+    const windowHeight = window.innerHeight;
+    elements.forEach(el => {
+      const position = el.getBoundingClientRect().top;
+      if (position < windowHeight - 100) {
+        el.classList.add('show');
+      }
+    });
+  }
+
+  // Highlight active nav link
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  function activateNav() {
+    let current = "";
+    sections.forEach(sec => {
+      const secTop = sec.offsetTop - 120;
+      if (scrollY >= secTop) current = sec.getAttribute("id");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    reveal();
+    activateNav();
+  });
+
+  window.addEventListener('load', () => {
+    typeLine();
+    reveal();
+    activateNav();
+  });
+
+  function openModal(img){
+    document.getElementById('certImg').src = img;
+    document.getElementById('certModal').style.display = 'flex';
+  }
+  function closeModal(){
+    document.getElementById('certModal').style.display = 'none';
+  }
+</script>
+</body>
+</html>
