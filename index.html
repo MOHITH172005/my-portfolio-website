@@ -436,19 +436,38 @@
 <!-- CERTIFICATES -->
 <section id="certificates" class="max-w-6xl mx-auto px-6 py-16 fade-in">
   <h2 class="text-3xl font-semibold accent mb-6">Certificates</h2>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-    <div onclick="openModal('python intern.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
-      <strong class="text-white">🐍 Python Intern - Skilldzire</strong>
-      <p class="text-gray-400">Click to view certificate</p>
-    </div>
-    <div onclick="openModal('webvoid.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
-      <strong class="text-white">💻 Python Intern - WebVoid Technologies</strong>
-      <p class="text-gray-400">Click to view certificate</p>
-    </div>
-    <div onclick="openModal('nptel.jpg')" class="glass p-4 cursor-pointer hover:bg-white/10 transition">
-      <strong class="text-white">🎓 NPTEL Certification</strong>
-      <p class="text-gray-400">Click to view certificate</p>
-    </div>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm">
+
+    <!-- 🐍 Python Intern -->
+    <a href="certificates/python_intern.pdf" download
+       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
+      <img src="certificates/python_intern.jpg" alt="Python Intern Certificate"
+           onerror="this.src='https://via.placeholder.com/400x300?text=Python+Intern';"
+           class="rounded-lg mb-3 mx-auto">
+      <p class="font-semibold text-white text-lg">🐍 Python Intern</p>
+      <p class="text-xs text-gray-400">Click to download PDF</p>
+    </a>
+
+    <!-- 🎓 NPTEL -->
+    <a href="certificates/nptel.pdf" download
+       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
+      <img src="certificates/nptel.jpg" alt="NPTEL Certificate"
+           onerror="this.src='https://via.placeholder.com/400x300?text=NPTEL';"
+           class="rounded-lg mb-3 mx-auto">
+      <p class="font-semibold text-white text-lg">🎓 NPTEL</p>
+      <p class="text-xs text-gray-400">Click to download PDF</p>
+    </a>
+
+    <!-- 💻 Webvoid -->
+    <a href="certificates/webvoid.pdf" download
+       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
+      <img src="certificates/webvoid.jpg" alt="Webvoid Certificate"
+           onerror="this.src='https://via.placeholder.com/400x300?text=Webvoid';"
+           class="rounded-lg mb-3 mx-auto">
+      <p class="font-semibold text-white text-lg">💻 Webvoid</p>
+      <p class="text-xs text-gray-400">Click to download PDF</p>
+    </a>
+
   </div>
 </section>
 
