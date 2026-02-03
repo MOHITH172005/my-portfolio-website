@@ -1,615 +1,480 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mohith Kumar Reddy Valasareddy | Python Full Stack Developer</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      background: radial-gradient(circle at top left, rgba(124,58,237,0.15), transparent 50%), 
-                  radial-gradient(circle at bottom right, rgba(6,182,212,0.15), transparent 50%), 
-                  #0b0f19;
-      color: #e5e7eb;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    .glass {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-    }
-
-    .accent {
-      background: linear-gradient(90deg,#7c3aed,#06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all .8s ease-out;
-    }
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .typing::after {
-      content: '|';
-      animation: blink 0.8s infinite;
-      margin-left: 4px;
-      color: #7c3aed;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    .btn {
-      background: linear-gradient(90deg,#7c3aed,#06b6d4);
-      color: white !important;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(6,182,212,0.25);
-    }
-
-    nav a.active {
-      background: linear-gradient(90deg,#06b6d4,#3b82f6);
-      color: #fff !important;
-      font-weight: 600;
-      box-shadow: 0 0 15px rgba(6,182,212,0.3);
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 20px rgba(124,58,237,0.5);
-    }
-    .close-btn {
-      position: absolute;
-      top: 30px;
-      right: 50px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .close-btn:hover { color: #06b6d4; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- NAV -->
-<header class="sticky top-0 z-50 bg-[#0b0f19]/90 backdrop-blur-lg border-b border-white/10">
-  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-    <div class="flex items-center gap-3">
-      <img src="photo.jpg" alt="Mohith" class="w-10 h-10 rounded-full object-cover border border-white/10">
-      <h1 class="text-sm font-semibold">V Mohith Kumar Reddy</h1>
-    </div>
-    <nav class="hidden md:flex gap-3 text-sm text-gray-300">
-      <a href="#home" class="btn">Home</a>
-      <a href="#about" class="btn">About</a>
-      <a href="#skills" class="btn">Skills</a>
-      <a href="#projects" class="btn">Projects</a>
-      <a href="#education" class="btn">education</a>
-      <a href="#certificates" class="btn">Certificates</a>
-      <a href="#experience" class="btn">Experience</a>
-      <a href="#contact" class="btn">Contact</a>
-      <a href="certificates/MOHITH VALASAREDDY RESUME .pdf" download class="btn text-xs font-semibold">Download CV</a>
-    </nav>
-  </div>
-</header>
 
-<!-- HOME -->
-<section id="home" class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-20 gap-10 fade-in">
-  <div class="max-w-xl">
-    <h2 id="intro1" class="text-3xl sm:text-4xl font-bold accent typing"></h2>
-    <h2 id="intro2" class="text-2xl sm:text-3xl font-semibold text-white mt-2"></h2>
-    <h2 id="intro3" class="text-2xl sm:text-3xl font-semibold text-white mt-2"></h2>
-    <p class="mt-6 text-gray-300 text-sm sm:text-base leading-relaxed">
-      I’m a passionate developer focused on building responsive web and backend applications using Python, JavaScript, Flask, and modern technologies.  
-      I enjoy transforming real-world ideas into smart, functional systems.
+<!-- Animated Background -->
+<div class="bg-gradient"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <h2>MyPortfolio</h2>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <!-- Profile Photo -->
+<div class="profile-photo">
+  <img src="images/profile.jpg" alt="Profile Photo">
+</div>
+
+  <h1 class="reveal">Hi, I’m <span>Mohith Kumar Reddy Valasareddy</span></h1>
+  <h2 class="typing"></h2>
+  <p class="reveal">Python & Django Full Stack Developer</p>
+
+  <div class="hero-btns reveal">
+    <a href="#projects">View Projects</a>
+    <a href="certificates/MOHITH VALASAREDDY RESUME .pdf" download class="btn text-xs font-semibold">Download CV</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="reveal">
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-card">
+    <h3>Python Full Stack Developer focused on real-world systems</h3>
+
+    <p>
+      I’m <strong>V Mohith Kumar Reddy</strong>, a developer who enjoys turning real problems
+      into clean, working software. I focus mainly on backend development, databases,
+      and building systems that are practical, scalable, and easy to use.
     </p>
-    <div class="flex gap-3 mt-6">
-      <a href="#projects" class="btn text-sm">View Projects</a>
-      <a href="#contact" class="btn text-sm">Contact Me</a>
+
+    <p>
+      Instead of just learning concepts, I spend most of my time building complete
+      applications — from database design to backend logic and user interfaces.
+      I like understanding how things work end-to-end.
+    </p>
+
+    <div class="about-points">
+      <ul>
+        <li>🎓 Final-year B.Tech student in Computer Science (AI) at MJR College of Engineering & Technology</li>
+        <li>⚙️ Strong in Python, Django, Flask, SQL, HTML, CSS, and JavaScript</li>
+        <li>🗄 Hands-on experience with PostgreSQL, MySQL, and database-driven applications</li>
+        <li>🚀 Built full projects like college management systems, voting platforms, and attendance trackers</li>
+        <li>🛠 Comfortable with Git, APIs, deployment, and automation workflows</li>
+        <li>📈 Interested in backend engineering, system design, and problem-solving</li>
+      </ul>
     </div>
-  </div>
-  <div class="relative">
-    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full blur opacity-60 animate-pulse"></div>
-    <img src="photo.jpg" alt="Mohith Photo" class="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-4 border-white/10 shadow-lg">
+
+    <div class="about-footer">
+      Currently seeking internships or entry-level roles where I can grow as a backend or full-stack developer.
+    </div>
   </div>
 </section>
 
-<section id="about" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-6">About Me</h2>
-  <div class="grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <p class="text-gray-300 leading-relaxed mb-4">
-        Hi, I’m <strong class="text-cyan-400">V Mohith Kumar Reddy</strong>, a passionate 
-        <strong>Python Full Stack Developer</strong> and <strong>Backend Engineer</strong> 
-        who loves solving real-world problems through technology. I’m currently pursuing my 
-        <strong>B.Tech in Computer Science (AI)</strong> at 
-        <strong>MJR College of Engineering & Technology</strong>.
-      </p>
 
-      <p class="text-gray-300 leading-relaxed mb-4">
-        I have hands-on experience in developing full-stack web applications using 
-        <strong>Python, Flask, Django, HTML</strong>, and databases like 
-        <strong>MySQL</strong> and <strong>MongoDB</strong>. Over time, I’ve worked on 
-        several impactful projects including a <strong>College Management System</strong>, 
-        <strong>AI Virtual Assistant</strong>, <strong>Voting System by Aadhaar Number</strong>, 
-        <strong>Student Attendance Tracker</strong>, and a <strong>Monthly Expense Tracker</strong>.
-      </p>
 
-      <p class="text-gray-300 leading-relaxed mb-4">
-        I’ve also completed internships in <strong>Python Development</strong>, 
-        <strong>AI/ML</strong>, and <strong>Web Development</strong>, which helped me 
-        strengthen my technical and problem-solving skills. I’m comfortable working with 
-        <strong>APIs, automation tools</strong>, and cloud deployment platforms like 
-        <strong>Netlify</strong> and <strong>GitHub Pages</strong>.
-      </p>
-
-      <p class="text-gray-300 leading-relaxed mb-4">
-        I’m an enthusiastic learner who constantly explores emerging technologies such as 
-        <strong>Machine Learning, Artificial Intelligence,</strong> and 
-        <strong>Automation</strong>. My goal is to become a highly skilled developer capable 
-        of building intelligent, scalable, and user-friendly applications, and to secure a 
-        position in a top tech company where I can contribute to meaningful innovations.
-      </p>
-
-      <p class="text-gray-300 leading-relaxed">
-        Outside of coding, I enjoy exploring new tech tools, participating in hackathons, 
-        and collaborating with other developers to bring creative ideas to life.
-      </p>
-
-      <div class="flex gap-4 mt-6">
-        <a href="#skills" class="btn text-sm">View My Skills</a>
-        <a href="#projects" class="btn text-sm">See My Projects</a>
-      </div>
-    </div>
-
-    
-  </div>
-</section>
 
 <!-- SKILLS -->
-<section id="skills" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-8">Skills</h2>
+<section id="skills" class="reveal">
+  <h2 class="section-title">Skills</h2>
 
   <!-- Frontend -->
-  <div class="mb-10">
-    <h3 class="text-xl font-semibold text-white mb-4">🎨 Frontend</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-10 h-10 mb-2" alt="HTML">
-        <span class="text-sm text-gray-300">HTML</span>
+  <div class="skill-group">
+    <h3 class="skill-title">🎨 Frontend</h3>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+        <span>HTML</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+        <span>CSS</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+        <span>JavaScript</span>
       </div>
     </div>
   </div>
 
   <!-- Backend -->
-  <div class="mb-10">
-    <h3 class="text-xl font-semibold text-white mb-4">⚙️ Backend</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-10 h-10 mb-2" alt="Python">
-        <span class="text-sm text-gray-300">Python</span>
+  <div class="skill-group">
+    <h3 class="skill-title">⚙️ Backend</h3>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        <span>Python</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
+        <span>Django</span>
       </div>
     </div>
   </div>
 
   <!-- Databases -->
-  <div class="mb-10">
-    <h3 class="text-xl font-semibold text-white mb-4">🗄️ Databases</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-10 h-10 mb-2" alt="SQL">
-        <span class="text-sm text-gray-300">SQL</span>
+  <div class="skill-group">
+    <h3 class="skill-title">🗄️ Databases</h3>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+        <span>MySQL</span>
       </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-10 h-10 mb-2" alt="MongoDB">
-        <span class="text-sm text-gray-300">MongoDB</span>
-      </div>
+      <div class="skill-card">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+  <span>PostgreSQL</span>
+</div>
+
     </div>
   </div>
 
   <!-- Hosting -->
-  <div class="mb-10">
-    <h3 class="text-xl font-semibold text-white mb-4">☁️ Hosting</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://seeklogo.com/images/N/netlify-logo-758722CDF4-seeklogo.com.png" class="w-10 h-10 mb-2" alt="Netlify">
-        <span class="text-sm text-gray-300">Netlify</span>
+  <div class="skill-group">
+    <h3 class="skill-title">☁️ Hosting</h3>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <img src="https://seeklogo.com/images/N/netlify-logo-758722CDF4-seeklogo.com.png" alt="Netlify">
+        <span>Netlify</span>
       </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-10 h-10 mb-2" alt="GitHub Pages">
-        <span class="text-sm text-gray-300">GitHub Pages</span>
+      <div class="skill-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Pages">
+        <span>GitHub Pages</span>
       </div>
     </div>
   </div>
 
   <!-- Tools -->
-  <div class="mb-10">
-    <h3 class="text-xl font-semibold text-white mb-4">🛠️ Tools</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732227.png" class="w-10 h-10 mb-2" alt="CMD">
-        <span class="text-sm text-gray-300">CMD</span>
+  <div class="skill-group">
+    <h3 class="skill-title">🛠️ Tools</h3>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+        <span>VS Code</span>
       </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-10 h-10 mb-2" alt="VS Code">
-        <span class="text-sm text-gray-300">VS Code</span>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+        <span>Git</span>
       </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-10 h-10 mb-2" alt="Git">
-        <span class="text-sm text-gray-300">Git</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-10 h-10 mb-2" alt="GitHub">
-        <span class="text-sm text-gray-300">GitHub</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Other Skills -->
-  <div>
-    <h3 class="text-xl font-semibold text-white mb-4">💡 Other Skills</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-10 h-10 mb-2" alt="Python">
-        <span class="text-sm text-gray-300">Python</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-10 h-10 mb-2" alt="Git">
-        <span class="text-sm text-gray-300">Git</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-10 h-10 mb-2" alt="VS Code">
-        <span class="text-sm text-gray-300">VS Code</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="w-10 h-10 mb-2" alt="GitHub">
-        <span class="text-sm text-gray-300">GitHub</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-10 h-10 mb-2" alt="HTML">
-        <span class="text-sm text-gray-300">HTML</span>
-      </div>
-      <div class="glass p-4 flex flex-col items-center hover:scale-105 transition">
-        <!-- Local Twilio logo -->
-        <img src="twilio.png" class="w-10 h-10 mb-2" alt="Twilio">
-        <span class="text-sm text-gray-300">Twilio</span>
+      <div class="skill-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <span>GitHub</span>
       </div>
     </div>
   </div>
 </section>
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+  <h2 class="section-title">Experience</h2>
 
+  <div class="experience-grid">
+
+    <!-- SQL Intern -->
+    <div class="experience-card">
+      <h3>🗄️ SQL Intern</h3>
+      <p class="exp-company">Internxcel Innovation Pvt Ltd</p>
+      <p class="exp-duration">Mar 2025 – Present</p>
+      <ul>
+        <li>Worked on SQL queries, joins, subqueries, and database optimization</li>
+        <li>Handled CRUD operations and real-time datasets</li>
+        <li>Practiced database design and data integrity concepts</li>
+      </ul>
+    </div>
+
+    <!-- Python Intern -->
+    <div class="experience-card">
+      <h3>🐍 Python Intern</h3>
+      <p class="exp-company">Web Void Technologies</p>
+      <p class="exp-duration">Feb 2024 – Mar 2024</p>
+      <ul>
+        <li>Developed Python scripts and automation mini-projects</li>
+        <li>Worked with file handling and basic data processing</li>
+      </ul>
+    </div>
+
+    <!-- AI & ML Intern -->
+    <div class="experience-card">
+      <h3>🤖 AI & ML Intern</h3>
+      <p class="exp-company">Black Bugs</p>
+      <p class="exp-duration">Nov 2023 – Dec 2023</p>
+      <ul>
+        <li>Learned supervised and unsupervised learning basics</li>
+        <li>Implemented simple ML models for practice</li>
+      </ul>
+    </div>
+
+    <!-- Web Development Intern -->
+    <div class="experience-card">
+      <h3>🌐 Web Development Intern</h3>
+      <p class="exp-company">SkillDzire</p>
+      <p class="exp-duration">Mar 2025 – May 2025</p>
+      <ul>
+        <li>Built responsive web pages using HTML, CSS, and JavaScript</li>
+        <li>Practiced deployment and basic hosting workflows</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
 
 <!-- PROJECTS -->
-<section id="projects" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-6">Projects</h2>
-  <div class="grid sm:grid-cols-2 gap-6">
+<section id="projects" class="reveal">
+  <h2 class="section-title">Projects</h2>
 
-    <!-- MJR College Attendance Management Website -->
-    <div class="glass p-5 rounded-xl">
-      <h3 class="text-lg font-semibold">🏫 MJR College Attendance Management Website</h3>
-      <p class="text-sm text-gray-300 mt-2">
-        A comprehensive college management system developed using HTML, CSS, and JavaScript with local data storage integration.  
-        It manages teachers, students, attendance records, and departmental requests — all through a secure admin dashboard.
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <h3>🏫 MJR College Attendance Management Website</h3>
+      <p>
+        A comprehensive college management system built using HTML, CSS, and JavaScript
+        with local data storage and a secure admin dashboard.
       </p>
 
-      <ul class="text-gray-400 text-sm mt-3 list-disc ml-5">
-        <li>Admin panel to manage teachers, students, and attendance.</li>
-        <li>Teacher, Student, and Parent login pages with dynamic UI.</li>
-        <li>Attendance marking, export to CSV, and SMS alerts integration.</li>
-        <li>Request approval, data tracking, and digital record management.</li>
+      <ul>
+        <li>Admin panel for teachers, students & attendance</li>
+        <li>Teacher, Student & Parent login systems</li>
+        <li>Attendance export (CSV) & SMS alerts</li>
+        <li>Request approvals & digital records</li>
       </ul>
 
-      <div class="mt-4 text-sm text-gray-300">
-        <strong>🔐 Admin Login Credentials:</strong><br>
-        Username: <span class="text-cyan-400">MJRCET</span><br>
-        Password: <span class="text-cyan-400">MJRCET@ADMIN</span>
+      <div class="project-meta">
+        <strong>🔐 Admin Login:</strong><br>
+        Username: <span>MJRCET</span><br>
+        Password: <span>MJRCET@ADMIN</span>
       </div>
 
-      <div class="flex gap-3 mt-4">
-        <a href="https://mjr-college-mannagemnt.vercel.app/" target="_blank" class="btn text-xs">🌐 Live Demo</a>
-        <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="text-cyan-400 text-sm mt-2 inline-block">View on GitHub →</a>
+      <div class="project-links">
+        <a href="https://mjr-college-mannagemnt.vercel.app/" target="_blank" class="btn-primary">🌐 Live Demo</a>
+        <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="btn-link">
+          View on GitHub →
+        </a>
       </div>
     </div>
 
-    <!-- Alcohol Delivery App -->
-    <div class="glass p-5 rounded-xl">
-      <h3 class="text-lg font-semibold">🍷 Alcohol Delivery App</h3>
-      <p class="text-sm text-gray-300 mt-2">
-        A Kivy-based mobile application prototype designed for online alcohol ordering and home delivery.
-        It includes SMS verification and database integration for order management.
+    <!-- Project 2 -->
+    <div class="project-card">
+      <h3>🍷 Alcohol Delivery App</h3>
+      <p>
+        A Kivy-based mobile app prototype for alcohol ordering with SMS verification
+        and database-backed order management.
       </p>
-      <ul class="text-gray-400 text-sm mt-3 list-disc ml-5">
-        <li>SQLite local storage for order data.</li>
-        <li>Twilio SMS integration for notifications.</li>
-        <li>Admin panel to track deliveries and manage requests.</li>
+
+      <ul>
+        <li>SQLite database for order data</li>
+        <li>Twilio SMS notifications</li>
+        <li>Admin panel for delivery tracking</li>
       </ul>
-      <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="text-cyan-400 text-sm mt-3 inline-block">View on GitHub →</a>
+
+      <div class="project-links">
+        <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="btn-link">
+          View on GitHub →
+        </a>
+      </div>
     </div>
 
-    <!-- Expense Tracker -->
-    <div class="glass p-5 rounded-xl">
-      <h3 class="text-lg font-semibold">💰 Monthly Expense Tracker</h3>
-      <p class="text-sm text-gray-300 mt-2">
-        A Python-based desktop application to manage and visualize monthly expenses efficiently.
+    <!-- Project 3 -->
+    <div class="project-card">
+      <h3>💰 Monthly Expense Tracker</h3>
+      <p>
+        A Python desktop application for managing and visualizing monthly expenses.
       </p>
-      <ul class="text-gray-400 text-sm mt-3 list-disc ml-5">
-        <li>Add, update, and delete daily expense entries.</li>
-        <li>View category-wise reports and monthly totals.</li>
-        <li>Exports data to CSV for record-keeping.</li>
+
+      <ul>
+        <li>Add, update & delete expenses</li>
+        <li>Category-wise & monthly reports</li>
+        <li>CSV export support</li>
       </ul>
-      <a href="https://github.com/MOHITH172005/monthly-expense-tracker" target="_blank" class="text-cyan-400 text-sm mt-3 inline-block">View on GitHub →</a>
+
+      <div class="project-links">
+        <a href="https://github.com/MOHITH172005/monthly-expense-tracker" target="_blank" class="btn-link">
+          View on GitHub →
+        </a>
+      </div>
     </div>
 
-    <!-- Voting System -->
-    <div class="glass p-5 rounded-xl">
-      <h3 class="text-lg font-semibold">🗳️ Voting System by Aadhaar Number</h3>
-      <p class="text-sm text-gray-300 mt-2">
+    <!-- Project 4 -->
+    <div class="project-card">
+      <h3>🗳️ Voting System by Aadhaar Number</h3>
+      <p>
         A secure Python web app for online voting using Aadhaar-based voter verification.
       </p>
-      <ul class="text-gray-400 text-sm mt-3 list-disc ml-5">
-        <li>Register voters using Aadhaar number and personal details.</li>
-        <li>Facial recognition and data validation options.</li>
-        <li>Ensures one-vote-per-person logic with SQLite backend.</li>
+
+      <ul>
+        <li>Aadhaar-based voter registration</li>
+        <li>Facial recognition validation</li>
+        <li>One-vote-per-person logic</li>
       </ul>
-      <a href="https://github.com/MOHITH172005/VOTING-SYSTEM-BY-AADHAR-NUMBER" target="_blank" class="text-cyan-400 text-sm mt-3 inline-block">View on GitHub →</a>
+
+      <div class="project-links">
+        <a href="https://github.com/MOHITH172005/VOTING-SYSTEM-BY-AADHAR-NUMBER" target="_blank" class="btn-link">
+          View on GitHub →
+        </a>
+      </div>
     </div>
 
-    <!-- Student Attendance Tracker -->
-    <div class="glass p-5 rounded-xl">
-      <h3 class="text-lg font-semibold">👨‍🎓 Student Attendance Tracker</h3>
-      <p class="text-sm text-gray-300 mt-2">
-        A Python-based attendance management system with face recognition and Twilio integration for automated SMS alerts.
+    <!-- Project 5 -->
+    <div class="project-card">
+      <h3>👨‍🎓 Student Attendance Tracker</h3>
+      <p>
+        A Python attendance system with face recognition and Twilio SMS alerts.
       </p>
-      <ul class="text-gray-400 text-sm mt-3 list-disc ml-5">
-        <li>Face detection and attendance logging using OpenCV.</li>
-        <li>Database for student info and attendance records.</li>
-        <li>Admin dashboard to manage attendance reports.</li>
+
+      <ul>
+        <li>Face detection using OpenCV</li>
+        <li>Attendance logging & database storage</li>
+        <li>Admin dashboard for reports</li>
       </ul>
-      <a href="https://github.com/MOHITH172005/student-attendance-tracker" target="_blank" class="text-cyan-400 text-sm mt-3 inline-block">View on GitHub →</a>
+
+      <div class="project-links">
+        <a href="https://github.com/MOHITH172005/student-attendance-tracker" target="_blank" class="btn-link">
+          View on GitHub →
+        </a>
+      </div>
     </div>
 
   </div>
 </section>
-
-
 <!-- EDUCATION -->
-<section id="education" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-6">Education</h2>
-  <div class="space-y-6 text-sm">
-    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
-        <div>
-        <h3 class="text-lg font-semibold text-white">🎓 B.Tech in Computer Science (AI)</h3>
-        <p class="text-gray-400">MJR College of Engineering & Technology (Affiliated to JNTUA)</p>
-        <p class="text-gray-400">2022 – 2026 | CGPA: <span class="text-cyan-400 font-semibold">78.6%</span></p>
-        <p class="text-gray-400">Pileru, Andhra Pradesh</p>
-      </div>
+<section id="education" class="reveal">
+  <h2 class="section-title">Education</h2>
+
+  <div class="education-grid">
+
+    <!-- B.Tech -->
+    <div class="education-card">
+      <h3>🎓 B.Tech in Computer Science (Artificial Intelligence)</h3>
+      <p class="edu-college">
+        MJR College of Engineering & Technology
+        <span>(Affiliated to JNTUA)</span>
+      </p>
+      <p class="edu-meta">
+        2022 – 2026 · CGPA: <strong>78.6%</strong>
+      </p>
+      <p class="edu-location">📍 Pileru, Andhra Pradesh</p>
     </div>
-    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
-   
-      <div>
-        <h3 class="text-lg font-semibold text-white">🏫 Intermediate (BIEAP)</h3>
-        <p class="text-gray-400">Sree Chaitanya Junior College</p>
-        <p class="text-gray-400">2020 – 2022 | 46.4%</p>
-        <p class="text-gray-400">Pileru, Andhra Pradesh</p>
-      </div>
+
+    <!-- Intermediate -->
+    <div class="education-card">
+      <h3>🏫 Intermediate (BIEAP)</h3>
+      <p class="edu-college">Sree Chaitanya Junior College</p>
+      <p class="edu-meta">
+        2020 – 2022 · <strong>46.4%</strong>
+      </p>
+      <p class="edu-location">📍 Pileru, Andhra Pradesh</p>
     </div>
-    <div class="glass p-5 rounded-xl flex items-center gap-4 hover:scale-105 transition">
-           <div>
-        <h3 class="text-lg font-semibold text-white">📘 SSC (Board of Secondary Education, AP)</h3>
-        <p class="text-gray-400">Yarravaripalem, Andhra Pradesh</p>
-        <p class="text-gray-400">2019 – 2020 | 77.7%</p>
-      </div>
+
+    <!-- SSC -->
+    <div class="education-card">
+      <h3>📘 SSC (Board of Secondary Education, AP)</h3>
+      <p class="edu-college">Yarravaripalem</p>
+      <p class="edu-meta">
+        2019 – 2020 · <strong>77.7%</strong>
+      </p>
+      <p class="edu-location">📍 Andhra Pradesh</p>
     </div>
+
   </div>
 </section>
-
 
 <!-- CERTIFICATES -->
-<section id="certificates" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-6">Certificates</h2>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm">
+<section id="certificates" class="reveal">
+  <h2 class="section-title">Certificates</h2>
 
-    <!-- 🐍 Python Intern -->
-    <a href="certificates/python_intern.pdf" download
-       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
-      <img src="certificates/python_intern.jpg" alt="Python Intern Certificate"
-           onerror="this.src='https://via.placeholder.com/400x300?text=Python+Intern';"
-           class="rounded-lg mb-3 mx-auto">
-      <p class="font-semibold text-white text-lg">🐍 Python Intern</p>
-      <p class="text-xs text-gray-400">Click to download PDF</p>
+  <div class="certificates-grid">
+
+    <!-- Python Intern -->
+    <a href="certificates/python_intern.pdf" download class="certificate-card">
+      <img
+        src="certificates/python_intern.jpg"
+        alt="Python Intern Certificate"
+        onerror="this.src='https://via.placeholder.com/400x300?text=Python+Intern';"
+      />
+      <h3>🐍 Python Intern</h3>
+      <span>Click to download PDF</span>
     </a>
 
-    <!-- 🎓 NPTEL -->
-    <a href="certificates/nptel.pdf" download
-       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
-      <img src="certificates/nptel.jpg" alt="NPTEL Certificate"
-           onerror="this.src='https://via.placeholder.com/400x300?text=NPTEL';"
-           class="rounded-lg mb-3 mx-auto">
-      <p class="font-semibold text-white text-lg">🎓 NPTEL</p>
-      <p class="text-xs text-gray-400">Click to download PDF</p>
+    <!-- NPTEL -->
+    <a href="certificates/nptel.pdf" download class="certificate-card">
+      <img
+        src="certificates/nptel.jpg"
+        alt="NPTEL Certificate"
+        onerror="this.src='https://via.placeholder.com/400x300?text=NPTEL';"
+      />
+      <h3>🎓 NPTEL</h3>
+      <span>Click to download PDF</span>
     </a>
 
-    <!-- 💻 Webvoid -->
-    <a href="certificates/webvoid.pdf" download
-       class="block bg-gray-800 p-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all text-center">
-      <img src="certificates/webvoid.jpg" alt="Webvoid Certificate"
-           onerror="this.src='https://via.placeholder.com/400x300?text=Webvoid';"
-           class="rounded-lg mb-3 mx-auto">
-      <p class="font-semibold text-white text-lg">💻 Webvoid</p>
-      <p class="text-xs text-gray-400">Click to download PDF</p>
+    <!-- Webvoid -->
+    <a href="certificates/webvoid.pdf" download class="certificate-card">
+      <img
+        src="certificates/webvoid.jpg"
+        alt="Webvoid Certificate"
+        onerror="this.src='https://via.placeholder.com400x300?text=Webvoid';"
+      />
+      <h3>💻 Webvoid</h3>
+      <span>Click to download PDF</span>
     </a>
 
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="max-w-6xl mx-auto px-6 py-16 fade-in">
-  <h2 class="text-3xl font-semibold accent mb-6">Experience</h2>
-  <div class="space-y-4 text-sm">
-    <div class="glass p-4">
-      <strong>Python Intern — Web Void Technologies</strong>
-      <p class="text-gray-400">Feb 2024 - Mar 2024</p>
-      <p>Worked on Python scripting and automation mini projects.</p>
-    </div>
-    <div class="glass p-4">
-      <strong>AI & ML Intern — Black Bugs</strong>
-      <p class="text-gray-400">Nov 2023 - Dec 2023</p>
-      <p>Learned ML basics and worked on supervised learning models.</p>
-    </div>
-    <div class="glass p-4">
-      <strong>Web Development Intern — SkillDzire</strong>
-      <p class="text-gray-400">Mar 2025 - May 2025</p>
-      <p>Developed responsive web layouts and practiced deployment.</p>
-    </div>
-  </div>
-</section>
 
+
+<!-- Contact -->
 <!-- CONTACT / GET IN TOUCH -->
-<section id="contact" class="max-w-5xl mx-auto px-6 py-16 fade-in text-center">
-  <h2 class="text-3xl font-semibold accent mb-6">📬 Get In Touch</h2>
-  <p class="text-gray-300 mb-10 text-sm md:text-base">
-    I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.  
+<section id="contact" class="reveal">
+  <h2 class="section-title">📬 Get In Touch</h2>
+
+  <p class="contact-text">
+    I’m always open to discussing new projects, creative ideas, or opportunities.
     Let’s connect and build something amazing together.
   </p>
 
-  <div class="flex flex-wrap justify-center gap-8 mt-8">
+  <div class="contact-grid">
 
     <!-- Phone -->
-    <a href="tel:+919951994651" target="_blank"
-       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
-      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" class="w-10 h-10 mb-2" alt="Phone">
-      <span class="text-gray-300 text-sm">Phone</span>
-      <span class="text-cyan-400 text-xs mt-1">+91 9951994651</span>
+    <a href="tel:+919951994651" class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone">
+      <span class="contact-label">Phone</span>
+      <span class="contact-value">+91 9951994651</span>
     </a>
 
     <!-- Email -->
-    <a href="mailto:mohithkumarreddyvalasareddy@gmail.com" target="_blank" 
-       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="w-10 h-10 mb-2" alt="Email">
-      <span class="text-gray-300 text-sm">Email</span>
-      <span class="text-cyan-400 text-xs mt-1">valasareddymohith17@gmail.com</span>
+    <a href="mailto:valasareddymohith17@gmail.com" class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+      <span class="contact-label">Email</span>
+      <span class="contact-value">valasareddymohith17@gmail.com</span>
     </a>
 
     <!-- GitHub -->
-    <a href="https://github.com/MOHITH172005" target="_blank" 
-       class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-10 h-10 mb-2" alt="GitHub">
-      <span class="text-gray-300 text-sm">GitHub</span>
-      <span class="text-cyan-400 text-xs mt-1">@MOHITH172005</span>
+    <a href="https://github.com/MOHITH172005" target="_blank" class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      <span class="contact-label">GitHub</span>
+      <span class="contact-value">@MOHITH172005</span>
     </a>
 
     <!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/mohith2005" target="_blank" 
-   class="glass flex flex-col items-center p-5 rounded-xl hover:scale-105 hover:shadow-lg transition">
-  <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-10 h-10 mb-2" alt="LinkedIn">
-  <span class="text-gray-300 text-sm">LinkedIn</span>
-  <span class="text-cyan-400 text-xs mt-1">/in/mohith2005</span>
-</a>
+    <a href="https://www.linkedin.com/in/mohith2005" target="_blank" class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value">/in/mohith2005</span>
+    </a>
 
   </div>
 </section>
 
-<!-- MODAL -->
-<div id="certModal" class="modal">
-  <span class="close-btn" onclick="closeModal()">&times;</span>
-  <img id="certImg" src="" alt="Certificate">
-</div>
+<footer>
+  © 2026 Mohith Valasareddy
+</footer>
 
-
-<script>
-  const lines = [
-    "Hi, I'm Mohith Kumar Reddy Valasareddy",
-    "I'm a Python Full Stack Developer",
-    "and Backend Developer"
-  ];
-  const speeds = 40;
-  function typeLine(i=0, j=0) {
-    if (i >= lines.length) return;
-    const el = document.getElementById('intro'+(i+1));
-    el.textContent = lines[i].slice(0,j);
-    if (j < lines[i].length) {
-      setTimeout(()=>typeLine(i,j+1),speeds);
-    } else {
-      el.classList.add('typing');
-      setTimeout(()=>{ el.classList.remove('typing'); typeLine(i+1,0); },600);
-    }
-  }
-
-  function reveal() {
-    const elements = document.querySelectorAll('.fade-in');
-    const windowHeight = window.innerHeight;
-    elements.forEach(el => {
-      const position = el.getBoundingClientRect().top;
-      if (position < windowHeight - 100) {
-        el.classList.add('show');
-      }
-    });
-  }
-
-  // Highlight active nav link
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  function activateNav() {
-    let current = "";
-    sections.forEach(sec => {
-      const secTop = sec.offsetTop - 120;
-      if (scrollY >= secTop) current = sec.getAttribute("id");
-    });
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  window.addEventListener('scroll', () => {
-    reveal();
-    activateNav();
-  });
-
-  window.addEventListener('load', () => {
-    typeLine();
-    reveal();
-    activateNav();
-  });
-
-  function openModal(img){
-    document.getElementById('certImg').src = img;
-    document.getElementById('certModal').style.display = 'flex';
-  }
-  function closeModal(){
-    document.getElementById('certModal').style.display = 'none';
-  }
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
