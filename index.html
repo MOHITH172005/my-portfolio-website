@@ -1,480 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohith Kumar Reddy | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --text: #e8e8f0;
+    --muted: #6b7280;
+    --border: rgba(0,229,255,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.6;
+  }
+
+  /* CURSOR */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    border-radius: 50%;
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%);
+    bottom: 0; left: 10%;
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag span.dot {
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .hero-name {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-name .line1 { display: block; color: var(--text); }
+  .hero-name .line2 {
+    display: block;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-role {
+    margin-top: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--muted);
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-role span { color: var(--accent3); }
+
+  .hero-desc {
+    margin-top: 1.5rem;
+    max-width: 520px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-size: 1rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2rem;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,229,255,0.35);
+  }
+  .btn-secondary {
+    padding: 0.9rem 2rem;
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .stat-item { }
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+  .section-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--surface); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .skill-card:hover { border-color: rgba(0,229,255,0.3); transform: translateY(-4px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .skill-card-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 2px;
+  }
+
+  /* PROJECTS */
+  #projects { }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .project-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-6px); }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .project-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tech-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.3);
+    color: #a78bfa;
+    border-radius: 2px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--surface); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-dot {
+    position: absolute;
+    left: -2.42rem;
+    top: 0.25rem;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .timeline-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-role {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* EDUCATION */
+  #education { }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+    transition: transform 0.3s;
+  }
+  .edu-card:hover { transform: translateY(-4px); }
+  .edu-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent3);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .edu-degree { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .edu-school { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.75rem; }
+  .edu-score {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .edu-score-label { font-size: 0.7rem; color: var(--muted); }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--surface); }
+  .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .cert-item:hover { border-color: rgba(0,229,255,0.3); }
+  .cert-icon { font-size: 1.5rem; }
+  .cert-name { font-weight: 700; margin-bottom: 0.25rem; }
+  .cert-issuer { font-size: 0.82rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-glow {
+    position: absolute;
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.08), transparent);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .contact-content { position: relative; z-index: 2; }
+  .contact-email {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--accent);
+    display: inline-block;
+    margin: 2rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    transition: border-color 0.3s;
+  }
+  .contact-email:hover { border-color: var(--accent); }
+  .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.72rem; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Animated Background -->
-<div class="bg-gradient"></div>
-
-<!-- Navbar -->
-<nav class="navbar">
-  <h2>MyPortfolio</h2>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MK_DEV</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="hero">
-  <!-- Profile Photo -->
-<div class="profile-photo">
-  <img src="images/profile.jpg" alt="Profile Photo">
-</div>
-
-  <h1 class="reveal">Hi, I’m <span>Mohith Kumar Reddy Valasareddy</span></h1>
-  <h2 class="typing"></h2>
-  <p class="reveal">Python & Django Full Stack Developer</p>
-
-  <div class="hero-btns reveal">
-    <a href="#projects">View Projects</a>
-    <a href="certificates/MOHITH VALASAREDDY RESUME .pdf" download class="btn text-xs font-semibold">Download CV</a>
-  </div>
-</section>
-
-<!-- About -->
-<section id="about" class="reveal">
-  <h2 class="section-title">About Me</h2>
-
-  <div class="about-card">
-    <h3>Python Full Stack Developer focused on real-world systems</h3>
-
-    <p>
-      I’m <strong>V Mohith Kumar Reddy</strong>, a developer who enjoys turning real problems
-      into clean, working software. I focus mainly on backend development, databases,
-      and building systems that are practical, scalable, and easy to use.
-    </p>
-
-    <p>
-      Instead of just learning concepts, I spend most of my time building complete
-      applications — from database design to backend logic and user interfaces.
-      I like understanding how things work end-to-end.
-    </p>
-
-    <div class="about-points">
-      <ul>
-        <li>🎓 Final-year B.Tech student in Computer Science (AI) at MJR College of Engineering & Technology</li>
-        <li>⚙️ Strong in Python, Django, Flask, SQL, HTML, CSS, and JavaScript</li>
-        <li>🗄 Hands-on experience with PostgreSQL, MySQL, and database-driven applications</li>
-        <li>🚀 Built full projects like college management systems, voting platforms, and attendance trackers</li>
-        <li>🛠 Comfortable with Git, APIs, deployment, and automation workflows</li>
-        <li>📈 Interested in backend engineering, system design, and problem-solving</li>
-      </ul>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Available for opportunities
     </div>
-
-    <div class="about-footer">
-      Currently seeking internships or entry-level roles where I can grow as a backend or full-stack developer.
+    <h1 class="hero-name">
+      <span class="line1">Mohith Kumar</span>
+      <span class="line2">Reddy V</span>
+    </h1>
+    <p class="hero-role">
+      <span>Backend Developer</span> · Python Full Stack Developer
+    </p>
+    <p class="hero-desc">
+      Building scalable web applications with Python, Django, and PostgreSQL. 
+      Turning complex real-world problems into clean, maintainable systems.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="mailto:valasareddymohith17@gmail.com" class="btn-secondary">Hire Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4mo</div>
+        <div class="stat-label">Internship</div>
+      </div>
     </div>
   </div>
 </section>
-
-
-
 
 <!-- SKILLS -->
-<section id="skills" class="reveal">
-  <h2 class="section-title">Skills</h2>
-
-  <!-- Frontend -->
-  <div class="skill-group">
-    <h3 class="skill-title">🎨 Frontend</h3>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
-        <span>HTML</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
-        <span>CSS</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-        <span>JavaScript</span>
+<section id="skills">
+  <p class="section-label">// What I work with</p>
+  <h2 class="section-title">Technical <em>Skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">⚡</div>
+      <div class="skill-card-title">Programming</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
       </div>
     </div>
-  </div>
-
-  <!-- Backend -->
-  <div class="skill-group">
-    <h3 class="skill-title">⚙️ Backend</h3>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-        <span>Python</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
-        <span>Django</span>
+    <div class="skill-card">
+      <div class="skill-card-icon">🏗️</div>
+      <div class="skill-card-title">Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Kivy</span>
       </div>
     </div>
-  </div>
-
-  <!-- Databases -->
-  <div class="skill-group">
-    <h3 class="skill-title">🗄️ Databases</h3>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
-        <span>MySQL</span>
-      </div>
-      <div class="skill-card">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
-  <span>PostgreSQL</span>
-</div>
-
-    </div>
-  </div>
-
-  <!-- Hosting -->
-  <div class="skill-group">
-    <h3 class="skill-title">☁️ Hosting</h3>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <img src="https://seeklogo.com/images/N/netlify-logo-758722CDF4-seeklogo.com.png" alt="Netlify">
-        <span>Netlify</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Pages">
-        <span>GitHub Pages</span>
+    <div class="skill-card">
+      <div class="skill-card-icon">🗄️</div>
+      <div class="skill-card-title">Databases</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">SQLite</span>
       </div>
     </div>
-  </div>
-
-  <!-- Tools -->
-  <div class="skill-group">
-    <h3 class="skill-title">🛠️ Tools</h3>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
-        <span>VS Code</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-        <span>Git</span>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
-        <span>GitHub</span>
+    <div class="skill-card">
+      <div class="skill-card-icon">🌐</div>
+      <div class="skill-card-title">Web Technologies</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">REST APIs</span>
       </div>
     </div>
-  </div>
-</section>
-<!-- EXPERIENCE -->
-<section id="experience" class="reveal">
-  <h2 class="section-title">Experience</h2>
-
-  <div class="experience-grid">
-
-    <!-- SQL Intern -->
-    <div class="experience-card">
-      <h3>🗄️ SQL Intern</h3>
-      <p class="exp-company">Internxcel Innovation Pvt Ltd</p>
-      <p class="exp-duration">Mar 2025 – Present</p>
-      <ul>
-        <li>Worked on SQL queries, joins, subqueries, and database optimization</li>
-        <li>Handled CRUD operations and real-time datasets</li>
-        <li>Practiced database design and data integrity concepts</li>
-      </ul>
+    <div class="skill-card">
+      <div class="skill-card-icon">🧪</div>
+      <div class="skill-card-title">Testing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Manual Testing</span>
+        <span class="skill-tag">Bug Reporting</span>
+        <span class="skill-tag">Test Cases</span>
+      </div>
     </div>
-
-    <!-- Python Intern -->
-    <div class="experience-card">
-      <h3>🐍 Python Intern</h3>
-      <p class="exp-company">Web Void Technologies</p>
-      <p class="exp-duration">Feb 2024 – Mar 2024</p>
-      <ul>
-        <li>Developed Python scripts and automation mini-projects</li>
-        <li>Worked with file handling and basic data processing</li>
-      </ul>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <div class="skill-card-title">Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">ML/DL</span>
+      </div>
     </div>
-
-    <!-- AI & ML Intern -->
-    <div class="experience-card">
-      <h3>🤖 AI & ML Intern</h3>
-      <p class="exp-company">Black Bugs</p>
-      <p class="exp-duration">Nov 2023 – Dec 2023</p>
-      <ul>
-        <li>Learned supervised and unsupervised learning basics</li>
-        <li>Implemented simple ML models for practice</li>
-      </ul>
-    </div>
-
-    <!-- Web Development Intern -->
-    <div class="experience-card">
-      <h3>🌐 Web Development Intern</h3>
-      <p class="exp-company">SkillDzire</p>
-      <p class="exp-duration">Mar 2025 – May 2025</p>
-      <ul>
-        <li>Built responsive web pages using HTML, CSS, and JavaScript</li>
-        <li>Practiced deployment and basic hosting workflows</li>
-      </ul>
-    </div>
-
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="reveal">
-  <h2 class="section-title">Projects</h2>
-
+<section id="projects">
+  <p class="section-label">// What I've built</p>
+  <h2 class="section-title">Featured <em>Projects</em></h2>
   <div class="projects-grid">
-
-    <!-- Project 1 -->
     <div class="project-card">
-      <h3>🏫 MJR College Attendance Management Website</h3>
-      <p>
-        A comprehensive college management system built using HTML, CSS, and JavaScript
-        with local data storage and a secure admin dashboard.
+      <div class="project-num">01 — Final Year Project</div>
+      <h3 class="project-title">Farmer Assistance System</h3>
+      <p class="project-desc">
+        Intelligent agricultural platform using ML & DL for crop prediction, yield forecasting, 
+        and agricultural decision-making. Built with Django backend and REST APIs for model inference.
       </p>
-
-      <ul>
-        <li>Admin panel for teachers, students & attendance</li>
-        <li>Teacher, Student & Parent login systems</li>
-        <li>Attendance export (CSV) & SMS alerts</li>
-        <li>Request approvals & digital records</li>
-      </ul>
-
-      <div class="project-meta">
-        <strong>🔐 Admin Login:</strong><br>
-        Username: <span>MJRCET</span><br>
-        Password: <span>MJRCET@ADMIN</span>
-      </div>
-
-      <div class="project-links">
-        <a href="https://mjr-college-mannagemnt.vercel.app/" target="_blank" class="btn-primary">🌐 Live Demo</a>
-        <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="btn-link">
-          View on GitHub →
-        </a>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Django</span>
+        <span class="tech-badge">ML/DL</span>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">REST API</span>
       </div>
     </div>
-
-    <!-- Project 2 -->
     <div class="project-card">
-      <h3>🍷 Alcohol Delivery App</h3>
-      <p>
-        A Kivy-based mobile app prototype for alcohol ordering with SMS verification
-        and database-backed order management.
+      <div class="project-num">02 — Full Stack</div>
+      <h3 class="project-title">College Attendance Management</h3>
+      <p class="project-desc">
+        Role-based attendance system for Admin, Teacher, Student & Parent. Includes CSV export, 
+        automated SMS alerts and a complete authentication system.
       </p>
-
-      <ul>
-        <li>SQLite database for order data</li>
-        <li>Twilio SMS notifications</li>
-        <li>Admin panel for delivery tracking</li>
-      </ul>
-
-      <div class="project-links">
-        <a href="https://github.com/MOHITH172005/MJR-COLLEGE-MANNAGEMNT" target="_blank" class="btn-link">
-          View on GitHub →
-        </a>
+      <div class="project-tech">
+        <span class="tech-badge">HTML/CSS</span>
+        <span class="tech-badge">JavaScript</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">SQLite</span>
       </div>
     </div>
-
-    <!-- Project 3 -->
     <div class="project-card">
-      <h3>💰 Monthly Expense Tracker</h3>
-      <p>
-        A Python desktop application for managing and visualizing monthly expenses.
+      <div class="project-num">03 — Mobile App</div>
+      <h3 class="project-title">Alcohol Delivery App</h3>
+      <p class="project-desc">
+        Kivy-based mobile prototype for online ordering and home delivery with real-time SMS 
+        notifications via Twilio API integration and order management.
       </p>
-
-      <ul>
-        <li>Add, update & delete expenses</li>
-        <li>Category-wise & monthly reports</li>
-        <li>CSV export support</li>
-      </ul>
-
-      <div class="project-links">
-        <a href="https://github.com/MOHITH172005/monthly-expense-tracker" target="_blank" class="btn-link">
-          View on GitHub →
-        </a>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Kivy</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Twilio API</span>
       </div>
     </div>
-
-    <!-- Project 4 -->
     <div class="project-card">
-      <h3>🗳️ Voting System by Aadhaar Number</h3>
-      <p>
-        A secure Python web app for online voting using Aadhaar-based voter verification.
+      <div class="project-num">04 — Desktop App</div>
+      <h3 class="project-title">Monthly Expense Tracker</h3>
+      <p class="project-desc">
+        Python desktop application for daily expense tracking with CRUD operations, 
+        SQLite storage, and automated monthly summary reports.
       </p>
-
-      <ul>
-        <li>Aadhaar-based voter registration</li>
-        <li>Facial recognition validation</li>
-        <li>One-vote-per-person logic</li>
-      </ul>
-
-      <div class="project-links">
-        <a href="https://github.com/MOHITH172005/VOTING-SYSTEM-BY-AADHAR-NUMBER" target="_blank" class="btn-link">
-          View on GitHub →
-        </a>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">SQLite</span>
       </div>
     </div>
-
-    <!-- Project 5 -->
-    <div class="project-card">
-      <h3>👨‍🎓 Student Attendance Tracker</h3>
-      <p>
-        A Python attendance system with face recognition and Twilio SMS alerts.
-      </p>
-
-      <ul>
-        <li>Face detection using OpenCV</li>
-        <li>Attendance logging & database storage</li>
-        <li>Admin dashboard for reports</li>
-      </ul>
-
-      <div class="project-links">
-        <a href="https://github.com/MOHITH172005/student-attendance-tracker" target="_blank" class="btn-link">
-          View on GitHub →
-        </a>
-      </div>
-    </div>
-
   </div>
 </section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// Where I've worked</p>
+  <h2 class="section-title">Work <em>Experience</em></h2>
+  <div class="timeline">
+    <div class="timeline-item" id="tl1">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">NOV 2025 – MAR 2026</div>
+      <div class="timeline-role">Full Stack Python Intern</div>
+      <div class="timeline-company">BR Concepts</div>
+      <div class="timeline-desc">
+        Gained hands-on experience in Python, Django, web development, and database management. 
+        Built and deployed full-stack applications during a 4-month internship program.
+      </div>
+    </div>
+    <div class="timeline-item" id="tl2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">ONGOING</div>
+      <div class="timeline-role">B.Tech — Computer Science (AI)</div>
+      <div class="timeline-company">MJR College of Engineering and Technology, Piler · 73.05%</div>
+      <div class="timeline-desc">
+        Specializing in Artificial Intelligence with a focus on machine learning, deep learning, 
+        and full-stack web development. Final year project on ML-based farmer assistance.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
-<section id="education" class="reveal">
-  <h2 class="section-title">Education</h2>
-
-  <div class="education-grid">
-
-    <!-- B.Tech -->
-    <div class="education-card">
-      <h3>🎓 B.Tech in Computer Science (Artificial Intelligence)</h3>
-      <p class="edu-college">
-        MJR College of Engineering & Technology
-        <span>(Affiliated to JNTUA)</span>
-      </p>
-      <p class="edu-meta">
-        2022 – 2026 · CGPA: <strong>78.6%</strong>
-      </p>
-      <p class="edu-location">📍 Pileru, Andhra Pradesh</p>
+<section id="education">
+  <p class="section-label">// My background</p>
+  <h2 class="section-title">Education <em>Journey</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-year">2022 – 2026</div>
+      <div class="edu-degree">B.Tech — CS (Artificial Intelligence)</div>
+      <div class="edu-school">MJR College of Engineering & Technology, Piler</div>
+      <div class="edu-score">73.05<span style="font-size:1rem">%</span></div>
+      <div class="edu-score-label">Percentage</div>
     </div>
-
-    <!-- Intermediate -->
-    <div class="education-card">
-      <h3>🏫 Intermediate (BIEAP)</h3>
-      <p class="edu-college">Sree Chaitanya Junior College</p>
-      <p class="edu-meta">
-        2020 – 2022 · <strong>46.4%</strong>
-      </p>
-      <p class="edu-location">📍 Pileru, Andhra Pradesh</p>
+    <div class="edu-card">
+      <div class="edu-year">2020 – 2022</div>
+      <div class="edu-degree">Intermediate — MPC</div>
+      <div class="edu-school">Sri Chaitanya Junior College, Piler</div>
+      <div class="edu-score">46.4<span style="font-size:1rem">%</span></div>
+      <div class="edu-score-label">Percentage</div>
     </div>
-
-    <!-- SSC -->
-    <div class="education-card">
-      <h3>📘 SSC (Board of Secondary Education, AP)</h3>
-      <p class="edu-college">Yarravaripalem</p>
-      <p class="edu-meta">
-        2019 – 2020 · <strong>77.7%</strong>
-      </p>
-      <p class="edu-location">📍 Andhra Pradesh</p>
+    <div class="edu-card">
+      <div class="edu-year">2019 – 2020</div>
+      <div class="edu-degree">Secondary School (SSC)</div>
+      <div class="edu-school">AP Model School, Yarravaripalem</div>
+      <div class="edu-score">77.7<span style="font-size:1rem">%</span></div>
+      <div class="edu-score-label">Percentage</div>
     </div>
-
   </div>
 </section>
 
-<!-- CERTIFICATES -->
-<section id="certificates" class="reveal">
-  <h2 class="section-title">Certificates</h2>
-
-  <div class="certificates-grid">
-
-    <!-- Python Intern -->
-    <a href="certificates/python_intern.pdf" download class="certificate-card">
-      <img
-        src="certificates/python_intern.jpg"
-        alt="Python Intern Certificate"
-        onerror="this.src='https://via.placeholder.com/400x300?text=Python+Intern';"
-      />
-      <h3>🐍 Python Intern</h3>
-      <span>Click to download PDF</span>
-    </a>
-
-    <!-- NPTEL -->
-    <a href="certificates/nptel.pdf" download class="certificate-card">
-      <img
-        src="certificates/nptel.jpg"
-        alt="NPTEL Certificate"
-        onerror="this.src='https://via.placeholder.com/400x300?text=NPTEL';"
-      />
-      <h3>🎓 NPTEL</h3>
-      <span>Click to download PDF</span>
-    </a>
-
-    <!-- Webvoid -->
-    <a href="certificates/webvoid.pdf" download class="certificate-card">
-      <img
-        src="certificates/webvoid.jpg"
-        alt="Webvoid Certificate"
-        onerror="this.src='https://via.placeholder.com400x300?text=Webvoid';"
-      />
-      <h3>💻 Webvoid</h3>
-      <span>Click to download PDF</span>
-    </a>
-
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label">// Credentials</p>
+  <h2 class="section-title">Certifi<em>cations</em></h2>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-icon">🐍</div>
+      <div>
+        <div class="cert-name">Python Internship</div>
+        <div class="cert-issuer">SkillDzire — Hands-on Python programming, automation & mini-projects</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🏛️</div>
+      <div>
+        <div class="cert-name">NPTEL Certification</div>
+        <div class="cert-issuer">IIT / Government of India — Nationally recognized course with practical assessments</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🌐</div>
+      <div>
+        <div class="cert-name">Python & Web Development</div>
+        <div class="cert-issuer">WebVoid Technologies — Python-based web dev, HTML, CSS, JS & responsive apps</div>
+      </div>
+    </div>
   </div>
 </section>
 
-
-
-<!-- Contact -->
-<!-- CONTACT / GET IN TOUCH -->
-<section id="contact" class="reveal">
-  <h2 class="section-title">📬 Get In Touch</h2>
-
-  <p class="contact-text">
-    I’m always open to discussing new projects, creative ideas, or opportunities.
-    Let’s connect and build something amazing together.
-  </p>
-
-  <div class="contact-grid">
-
-    <!-- Phone -->
-    <a href="tel:+919951994651" class="contact-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone">
-      <span class="contact-label">Phone</span>
-      <span class="contact-value">+91 9951994651</span>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-content">
+    <p class="section-label">// Let's connect</p>
+    <h2 class="section-title">Get In <em>Touch</em></h2>
+    <p style="color: var(--muted); max-width: 480px; margin: 0 auto 1rem; font-size: 0.95rem; line-height: 1.7;">
+      Open to full-time roles, internships, and freelance projects. Let's build something great together.
+    </p>
+    <a class="contact-email" href="mailto:valasareddymohith17@gmail.com">
+      valasareddymohith17@gmail.com
     </a>
-
-    <!-- Email -->
-    <a href="mailto:valasareddymohith17@gmail.com" class="contact-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-      <span class="contact-label">Email</span>
-      <span class="contact-value">valasareddymohith17@gmail.com</span>
-    </a>
-
-    <!-- GitHub -->
-    <a href="https://github.com/MOHITH172005" target="_blank" class="contact-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
-      <span class="contact-label">GitHub</span>
-      <span class="contact-value">@MOHITH172005</span>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/mohith2005" target="_blank" class="contact-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-      <span class="contact-label">LinkedIn</span>
-      <span class="contact-value">/in/mohith2005</span>
-    </a>
-
+    <div class="contact-links">
+      <a class="contact-link" href="https://linkedin.com/in/mohith2005" target="_blank">
+        🔗 LinkedIn
+      </a>
+      <a class="contact-link" href="https://github.com/MOHITH172005" target="_blank">
+        ⚙️ GitHub
+      </a>
+      <a class="contact-link" href="https://my-portfolio-website-pink-three.vercel.app" target="_blank">
+        🌐 Portfolio
+      </a>
+      <a class="contact-link" href="tel:+919951994651">
+        📱 +91-9951994651
+      </a>
+    </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 Mohith Valasareddy
+  <span>© 2026 — V Mohith Kumar Reddy</span>
+  <span>Designed & Built with ❤️ · Tirupati, AP</span>
 </footer>
 
-<script src="js/script.js"></script>
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 5 + 'px';
+    cursor.style.top = my - 5 + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx - 18 + 'px';
+    ring.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.transform = 'scale(1.5)'; ring.style.opacity = '1'; });
+    el.addEventListener('mouseleave', () => { ring.style.transform = 'scale(1)'; ring.style.opacity = '0.5'; });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  // Skill cards stagger
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card, .project-card, .edu-card, .cert-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
+    skillObserver.observe(el);
+  });
+</script>
 </body>
 </html>
